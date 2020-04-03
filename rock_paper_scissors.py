@@ -1,7 +1,5 @@
-#import module we need
 import random
 
-#file i/o functions for historical results
 def load_results():
     text_file = open("history.txt", "r")
     history = text_file.read().split(",")
@@ -13,7 +11,6 @@ def save_results( w, t, l):
     text_file.write( str(w) + "," + str(t) + "," + str(l))
     text_file.close()
 
-#welcome message
 results = load_results()
 wins = int(results[0])
 ties = int( results[1])
@@ -23,11 +20,9 @@ print("Wins: %s, Ties: %s, Losses: %s" % (wins, ties, losses))
 print("Please choose to continue...")
 
 
-#initialize user, computer choices
 computer = random.randint(1,3)
 user = int(input("[1] Rock  [2] Paper   [3] Scissors    [9] Quit\n"))
 
-#gamplay loop
 while not user == 9:
     #user chooses ROCK
     if user == 1:
@@ -66,14 +61,11 @@ while not user == 9:
             ties += 1
     else:
         print("Invalid selection. Please try again.")
-    #print updated stats
     print("Wins: %s, Ties: %s, Losses: %s" % (wins, ties, losses))
 
-    #prompt user to make another selection
     print("Please choose to continue...")
-    #initialize user, computer choices
+
     computer = random.randint(1,3)
     user = int(input("[1] Rock  [2] Paper   [3] Scissors    [9] Quit\n"))
 
-# #game over, save results
 save_results(wins, ties, losses)
